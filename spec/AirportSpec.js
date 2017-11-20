@@ -6,6 +6,7 @@ describe('Airport',function() {
   var plane;
 
   describe('when instructing plane', function(){
+
     describe('to land', function(){
       airport_1 = new Airport();
       plane = new Plane();
