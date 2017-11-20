@@ -20,7 +20,7 @@ describe('Plane',function() {
     airport = new Airport;
 
     it('changes status when landing', function(){
-      airport.land(plane)
+      airport.land(plane, 0.1)
       expect(plane.isFlying).toEqual(false)
     });
 
