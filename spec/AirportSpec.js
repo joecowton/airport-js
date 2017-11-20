@@ -8,6 +8,7 @@ describe('Airport',function() {
   describe('when instructing plane', function(){
     describe('to land', function(){
       airport_1 = new Airport();
+      plane = new Plane();
       it('updates the planes array', function(){
         airport_1.land(plane);
         expect(airport_1.planes.length).toEqual(1);
@@ -20,6 +21,7 @@ describe('Airport',function() {
 
     describe('to take off', function(){
       airport_2 = new Airport();
+      plane = new Plane();
       it('updates the planes array', function(){
         airport_2.land(plane);
         airport_2.takeOff(plane);
