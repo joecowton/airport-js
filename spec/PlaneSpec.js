@@ -15,18 +15,19 @@ describe('Plane',function() {
   });
 
   describe('is flying?', function(){
-
     plane = new Plane("Bombardier");
     airport = new Airport;
 
     it('changes status when landing', function(){
-      airport.land(plane, 0.1)
-      expect(plane.isFlying).toEqual(false)
+      spyOn(airport, 'isStormy').and.returnValue('false');
+      airport.land(plane);
+      expect(plane.isFlying).toEqual(false);
     });
 
     it('changes status when taking off', function(){
-      airport.takeOff(plane)
-      expect(plane.isFlying).toEqual(true)
+      spyOn(airport, 'isStormy').and.returnValue('false');
+      airport.takeOff(plane);
+      expect(plane.isFlying).toEqual(true);
     });
   });
 
