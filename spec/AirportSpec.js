@@ -2,12 +2,16 @@ describe('Airport',function() {
 
   beforeEach(function() {
     airport = new Airport();
+    // var plane = null;
     plane = new Plane("Plane");
+    plane_2 = new Plane("Plane2");
+    plane_3 = new Plane("Plane3");
     weather = new Weather();
     Math.random = function() { return 0.2; };
   });
 
   describe('when instructing plane', function(){
+
     describe('to land', function(){
 
       it('updates the planes array', function(){
@@ -22,6 +26,12 @@ describe('Airport',function() {
       it('Returns error if already landed', function(){
         airport.land(plane);
         expect(function() {airport.land(plane)}).toThrow("Plane is already on the ground!")
+      });
+
+      it('Plane cannot land if airport is full', function (){
+        airport.land(plane_2);
+        airport.land(plane_3);
+        expect(function() {airport.land(plane)}).toThrow("Airport is full!")
       });
     });
 

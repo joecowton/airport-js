@@ -4,6 +4,7 @@ function Airport() {
 };
 
 Airport.prototype.land = function (plane){
+  if (airport.full() === true) throw "Airport is full!"
   if (weather.isStormy() === true) throw "Weather is stormy, can't land!"
   if (plane.isFlying === false) throw "Plane is already on the ground!"
   this.planes.push(plane);
@@ -23,4 +24,8 @@ Airport.prototype.takeOff = function (plane){
 
 Airport.prototype.isStormy = function () {
   return (Math.random() > 0.8) ? true : false;
+};
+
+Airport.prototype.full = function () {
+  return this.planes.length >= 2 ? true : false;
 };
