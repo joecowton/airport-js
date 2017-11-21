@@ -4,7 +4,8 @@ function Airport() {
 };
 
 Airport.prototype.land = function (plane){
-  if (this.weather.isStormy === true) throw "Weather is stormy, can't land!"
+  if (weather.isStormy() === true) throw "Weather is stormy, can't land!"
+  if (plane.isFlying === false) throw "Plane is already on the ground!"
   this.planes.push(plane);
   plane.changeStatus();
   console.log(this.planes);
@@ -12,7 +13,8 @@ Airport.prototype.land = function (plane){
 };
 
 Airport.prototype.takeOff = function (plane){
-  if(this.weather.isStormy === true) throw "Weather is stormy, can't take off!"
+  if( weather.isStormy() === true) throw "Weather is stormy, can't take off!"
+  if (plane.isFlying === true) throw "Plane is already in the air!"
   this.planes.pop();
   plane.changeStatus();
   console.log(this.planes);

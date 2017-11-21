@@ -1,6 +1,12 @@
 describe('Plane',function() {
+  //
+  // var plane;
 
-  var plane;
+  beforeEach(function() {
+    weather = new Weather();
+    plane = new Plane("Bombardier");
+    airport = new Airport;
+  });
 
   describe('when created', function(){
     plane = new Plane("Bombardier");
@@ -15,8 +21,6 @@ describe('Plane',function() {
   });
 
   describe('is flying?', function(){
-    plane = new Plane("Bombardier");
-    airport = new Airport;
 
     it('changes status when landing', function(){
       airport.land(plane);
@@ -24,6 +28,7 @@ describe('Plane',function() {
     });
 
     it('changes status when taking off', function(){
+      airport.land(plane);
       airport.takeOff(plane);
       expect(plane.isFlying).toEqual(true);
     });
