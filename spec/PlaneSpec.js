@@ -19,19 +19,13 @@ describe('Plane',function() {
     airport = new Airport;
 
     it('changes status when landing', function(){
-      spyOn(airport, 'isStormy').and.returnValue('false');
       airport.land(plane);
       expect(plane.isFlying).toEqual(false);
     });
 
     it('changes status when taking off', function(){
-      spyOn(airport, 'isStormy').and.returnValue('false');
       airport.takeOff(plane);
       expect(plane.isFlying).toEqual(true);
     });
   });
-
-
-
-
 });
