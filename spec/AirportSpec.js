@@ -7,12 +7,15 @@ describe('Airport',function() {
     plane_2 = new Plane("Plane2");
     plane_3 = new Plane("Plane3");
     weather = new Weather();
-    Math.random = function() { return 0.2; };
   });
 
   describe('when instructing plane', function(){
 
     describe('to land', function(){
+
+      beforeEach(function(){
+        spyOn(weather, 'isStormy').and.returnValue(false)
+      });
 
       it('updates the planes array', function(){
         airport.land(plane);
@@ -37,6 +40,10 @@ describe('Airport',function() {
 
     describe('to take off', function(){
 
+      beforeEach(function(){
+        spyOn(weather, 'isStormy').and.returnValue(false)
+      });
+
       it('updates the planes array', function(){
         airport.land(plane);
         airport.takeOff(plane);
@@ -54,18 +61,19 @@ describe('Airport',function() {
     });
 
     describe('bad weather', function(){
+
       beforeEach(function() {
       });
 
       it('plane cannot take off when stormy', function(){
-
+        spyOn(Math, 'random').and.returnValue(0.2);   
         airport.land(plane);
         spyOn(weather, 'isStormy').and.returnValue(true);
         expect(function() { airport.takeOff(plane)}).toThrow("Weather is stormy, can't take off!");
       });
 
       it('prevents landing when stormy', function(){
-         spyOn(weather, 'isStormy').and.returnValue(true);
+        spyOn(weather, 'isStormy').and.returnValue(true);
         expect(function() { airport.land(plane)}).toThrow("Weather is stormy, can't land!");
       });
     });

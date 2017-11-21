@@ -3,24 +3,30 @@ describe('Plane',function() {
   // var plane;
 
   beforeEach(function() {
-    weather = new Weather();
     plane = new Plane("Bombardier");
     airport = new Airport;
   });
 
   describe('when created', function(){
-    plane = new Plane("Bombardier");
 
-    it('is flying', function(){
-      expect(plane.isFlying).toEqual(true)
+    beforeEach(function(){
+      spyOn(weather, 'isStormy').and.returnValue(false)
     });
 
-    it('has a name', function(){
-      expect(plane.name).toEqual("Bombardier")
-    });
+      it('is flying', function(){
+        expect(plane.isFlying).toEqual(true)
+      });
+
+      it('has a name', function(){
+        expect(plane.name).toEqual("Bombardier")
+      });
   });
 
   describe('is flying?', function(){
+
+    beforeEach(function(){
+      spyOn(weather, 'isStormy').and.returnValue(false)
+    });
 
     it('changes status when landing', function(){
       airport.land(plane);
