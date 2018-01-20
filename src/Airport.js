@@ -9,7 +9,6 @@ Airport.prototype.land = function (plane){
   if (plane.isFlying === false) throw "Plane is already on the ground!"
   this.planes.push(plane);
   plane.changeStatus();
-  console.log(this.planes);
   return 'Plane has landed!'
 };
 
@@ -18,7 +17,6 @@ Airport.prototype.takeOff = function (plane){
   if (plane.isFlying === true) throw "Plane is already in the air!"
   this.planes.pop();
   plane.changeStatus();
-  console.log(this.planes);
   return 'Plane has taken off!'
 };
 
