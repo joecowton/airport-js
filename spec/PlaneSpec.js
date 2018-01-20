@@ -11,13 +11,13 @@ describe('Plane',function() {
       spyOn(weather, 'isStormy').and.returnValue(false)
     });
 
-      it('is flying', function(){
-        expect(plane.isFlying).toEqual(true)
-      });
+    it('is flying', function(){
+      expect(plane.isFlying).toEqual(true)
+    });
 
-      it('has a name', function(){
-        expect(plane.name).toEqual("Bombardier")
-      });
+    it('has a name', function(){
+      expect(plane.name).toEqual("Bombardier")
+    });
   });
 
   describe('is flying?', function(){
